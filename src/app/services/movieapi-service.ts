@@ -1,5 +1,5 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Injectable, signal } from '@angular/core';
+import { computed, Injectable, signal } from '@angular/core';
 import { MovieDetails, SearchResults } from '../models/moviedetails.interface';
 import { Observable, catchError, tap, throwError, take } from 'rxjs';
 
@@ -15,7 +15,13 @@ export class MovieapiService {
 
     public errorMessage = signal<any>(null);
 
+    // o	Create signal that stores totalResults
     public totalResults = signal<string | undefined>(undefined);
+    
+    // o	Create signal that stores maxPages – this should be calculated from totalResults and results per page
+    derivedMaxPages = computed(() => {
+        return Math.round(Number(this.totalResults) / 10);
+    })
 
     private _baseURL = "https://www.omdbapi.com/";
     private _API_KEY = "?apikey=e42e477d";
