@@ -1,4 +1,4 @@
-import { Component, inject, input } from '@angular/core';
+import { Component, inject, input, effect } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { MovieapiService } from '../../services/movieapi-service';
 
@@ -13,11 +13,15 @@ import { MovieapiService } from '../../services/movieapi-service';
 // this is to display default "try searching for a movie"
 export class Details {
    movieService = inject(MovieapiService);
-   protected id = input.required<string>();
+   protected id = input<string>();
 
-   ngOnInit() {
-    let movieID = this.id();
-    this.movieService.getMovie(movieID);
+   constructor() {
+    // effect(). This is "reactive," meaning it will wait until the id actually has a value and then run automatically whenever that id changes.
+    effect(() => {
+        const movieID = this.id();
+        if (movieID) {
+            this.movieService.getMovie(movieID);
+        }
+    })
    }
-
 }
