@@ -6,6 +6,7 @@ export interface MovieDetails {
     Director: string;
     Poster: string;
     imdbID: string;
+    Ratings: {source: string; value: string}[];
     Type: string;
     Response: string;
     Error: string;

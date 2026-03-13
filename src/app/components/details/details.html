@@ -16,18 +16,24 @@
         <h1 class="text-info">{{(movieService.movie()?.Title ?? "No title")}}</h1>
         <h2>Director: {{(movieService.movie()?.Director ?? "No director")}}</h2>
         <h3>Year of release: {{(movieService.movie()?.Year ?? "No year")}}</h3>
+        @if (movieService.movie()?.Ratings?.length === 0) {
         <h3>Ratings:</h3>
-        <ul>
-          <!-- @for () -->
-        </ul>
-        
+
+          @for (rating of movieService.movie()?.Ratings; track rating) {
+          <h4>{{rating.source}}</h4>
+          <h5>{{rating.value}}</h5>
+          }
+
+        }
+
+
       </div>
       <a routerLink="/" class="mt-auto btn btn-primary btn-sm" (click)="movieService.movie.set(null)">
-      Back Home
-    </a>
+        Back Home
+      </a>
       }
     </div>
-    
+
   </div>
 </div>
 
