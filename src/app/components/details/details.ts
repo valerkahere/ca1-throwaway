@@ -1,12 +1,12 @@
 import { Component, inject } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterLink } from '@angular/router';
 import { MovieapiService } from '../../services/movieapi-service';
 
 
 
 @Component({
   selector: 'app-details',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './details.html',
   styleUrl: './details.css',
 })

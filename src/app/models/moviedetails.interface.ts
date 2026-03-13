@@ -5,6 +5,8 @@ export interface MovieDetails {
     Year: string;
     Director: string;
     Poster: string;
+    imdbID: string;
+    Type: string;
     Response: string;
     Error: string;
 }

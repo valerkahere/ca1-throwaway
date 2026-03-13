@@ -1,38 +1,19 @@
-@if (movieService.movie()?.Response === "True") {
-    <div class="
-    bg-dark bg-gradient text-white
-    border border-light-subtle rounded-4
-    row mt-4 p-4">
-        <div class="col-4">
-            @if ((movieService.movie()?.Poster?.length ?? 0) > 3) {
-            <img class="img-fluid rounded-1 " [src]="movieService.movie()?.Poster">
-            }
+<div class="row row-cols-1 row-cols-md-3 g-4"> <!-- Grid setup with gutters -->
+  @for (movieData of movieService.movies(); track movieData.imdbID) {
+    <div class="col d-flex"> <!-- Column stretches to match the tallest in the row -->
+      <div class="card h-100 w-100"> <!-- Card fills the full height of the column -->
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">{{ movieData.Title }}</h5>
+          <p class="card-text">{{ movieData.Year }}</p>
+          <p class="text-muted small">{{ movieData.imdbID }}</p>
+          
+          <!-- Push the button to the bottom using 'mt-auto' -->
+          <a [routerLink]="['/movie', movieData.imdbID]" 
+             class="btn btn-primary mt-auto">
+             View Details
+          </a>
         </div>
-        <div class="col-8">
-            @if ((movieService.movie()?.Title ?? "No title") !== null) {
-            <div>
-                <h1 class="text-info">{{(movieService.movie()?.Title ?? "No title")}}</h1>
-                <h2>Director: {{(movieService.movie()?.Director ?? "No director")}}</h2>
-                <h3>Year of release: {{(movieService.movie()?.Year ?? "No year")}}</h3>
-            </div>
-            }
-        </div>
+      </div>
     </div>
-
-} @else {
-
-<div class="
-border border-light-subtle rounded-4
-row bg-light mx-1 p-4">
-    @if (!movieService.movie()) {
-    <h3>Try searching for a movie above</h3>
-    }
-    @if (movieService.movie()?.Error) {
-    <h3 class="text-danger">
-        {{ movieService.movie()?.Error +
-        " Please try searching for a different movie."
-        }}
-    </h3>
-    }
+  }
 </div>
-}
