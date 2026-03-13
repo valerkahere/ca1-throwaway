@@ -10,5 +10,6 @@ import { Details } from './components/details/details';
   styleUrl: './app.css'
 })
 export class App {
-  protected readonly title = signal('ca1');
+    title = signal("Movie Finder");
+  
 }

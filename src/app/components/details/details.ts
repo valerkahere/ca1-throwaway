@@ -1,4 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
+import { MovieapiService } from '../../services/movieapi-service';
+
+
 
 @Component({
   selector: 'app-details',
@@ -7,5 +11,6 @@ import { Component } from '@angular/core';
   styleUrl: './details.css',
 })
 export class Details {
+   movieService = inject(MovieapiService);
 
 }

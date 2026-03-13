@@ -5,4 +5,5 @@ export interface MovieDetails {
     Year: string;
     Director: string;
     Poster: string;
+    Error: string;
 }

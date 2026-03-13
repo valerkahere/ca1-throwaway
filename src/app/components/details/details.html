@@ -1,1 +1,22 @@
-<p>details works!</p>
+@if (movieService.movie()) {
+<div class="row bg-light mt-4 p-4">
+    <div class="col-sm-4">
+        <div>
+            <h3>{{movieService.errorMessage()}}</h3>
+        </div>
+        @if ((movieService.movie()?.Poster?.length ?? 0) > 3) {
+            <div>
+                <img [src]="movieService.movie()?.Poster">
+            </div>
+        }
+    </div>
+    <div class="col-sm-8">
+        @if ((movieService.movie()?.Title ?? "No title") !== null) {
+            <div>
+                <h1>{{(movieService.movie()?.Title ?? "No title")}}</h1>
+                <h2>Director: {{(movieService.movie()?.Director ?? "No director")}}</h2>
+            </div>
+        }
+    </div>
+</div>
+}

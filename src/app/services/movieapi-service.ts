@@ -9,6 +9,7 @@ import { Observable, catchError, tap, throwError } from 'rxjs';
 export class MovieapiService {
     
     public movie = signal<MovieDetails | null>(null);
+    public errorMessage = signal<any>(null);
 
     private _baseURL = "https://www.omdbapi.com/";
     private _API_KEY = "?apikey=e42e477d&t=";
@@ -18,6 +19,7 @@ export class MovieapiService {
     constructor(private _http:HttpClient) {}
 
     private handleError(err:HttpErrorResponse) {
+        this.errorMessage.set(err);
         console.log(`OmdbApiService ${err.message}`)
         return throwError(() => new Error(`OmdbApiService: ${err.message}`))
     }
