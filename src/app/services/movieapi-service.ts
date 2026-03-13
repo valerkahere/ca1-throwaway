@@ -37,7 +37,7 @@ export class MovieapiService {
             // tap - Performs Side Effects: Use it for actions that don't change the data, such as logging to the console, triggering analytics, or updating an external variable.
             tap(data => console.log("Moviedata: " + JSON.stringify(data))
         ),
-            catchError(this.handleError)
+            catchError((err) => this.handleError(err))
         ) 
         .subscribe(data => {
             this.movie.set(data);
