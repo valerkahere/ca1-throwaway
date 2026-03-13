@@ -8,3 +8,11 @@ export interface MovieDetails {
     Response: string;
     Error: string;
 }
+
+// s=jaws >1 movies
+export interface SearchResults {
+    Search: MovieDetails[];
+    totalResults?: string;
+    Response: string;
+    Error?: string;
+}
