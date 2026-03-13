@@ -1,6 +1,6 @@
 // fields you plan to display for your movie
 // title, year, director, poster - must have at least these properties
-interface MovieDetails {
+export interface MovieDetails {
     Title: string;
     Year: string;
     Director: string;
