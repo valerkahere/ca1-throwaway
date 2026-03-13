@@ -16,7 +16,7 @@ export class MovieapiService {
     public errorMessage = signal<any>(null);
 
     private _baseURL = "https://www.omdbapi.com/";
-    private _API_KEY = "?apikey=e42e477d&t=";
+    private _API_KEY = "?apikey=e42e477d";
 
     // _http is built during object creation without initializing
     //  It automatically creates a class property named _http and assigns the injected instance to it, so you can use it later as this._http.
@@ -30,21 +30,23 @@ export class MovieapiService {
 
     
     // the return value is observable of type MovieDetails
-    getMovie(id: string):Observable<MovieDetails> {
-        const fullURL = `${this._baseURL}${this._API_KEY}&t=${id}`
-        return this._http.get<MovieDetails>(fullURL)
+    getMovie(id: string) {
+        const fullURL = `${this._baseURL}${this._API_KEY}&i=${id}`
+        this._http.get<MovieDetails>(fullURL)
         .pipe( // pipe chain multiples operators together. Takes observable, returns transformte
             // tap - Performs Side Effects: Use it for actions that don't change the data, such as logging to the console, triggering analytics, or updating an external variable.
-            tap(data => console.log("Moviedata/error" + JSON.stringify(data))
+            tap(data => console.log("Moviedata: " + JSON.stringify(data))
         ),
             catchError(this.handleError)
-        )
-        
+        ) 
+        .subscribe(data => {
+            this.movie.set(data);
+        })
         
     }
 
-    getMovies(id: string) {
-        const fullURL = `${this._baseURL}${this._API_KEY}&s=${id}`;
+    getMovies(title: string) {
+        const fullURL = `${this._baseURL}${this._API_KEY}&s=${title}`;
         this._http.get<SearchResults>(fullURL)
         .pipe(
             take(1)

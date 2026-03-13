@@ -14,14 +14,14 @@ export class Search {
 
     constructor(public movieApiService:MovieapiService) {}
 
-    getMovieDetails(movieName:string) : boolean {
-        //The first function passed to the subscribe method specifies the action to take whenever the observable emits an item.
-        this.movieApiService.getMovie(movieName).subscribe(
-            movieData => {
-                // This code then sets the service's movie signal to the returned data.
-                this.movieApiService.movie.set(movieData);
-            }
-        )
-        return false;
-    }
+    // getMovieDetails(movieName:string) : boolean {
+    //     //The first function passed to the subscribe method specifies the action to take whenever the observable emits an item.
+    //     this.movieApiService.getMovie(movieName).subscribe(
+    //         movieData => {
+    //             // This code then sets the service's movie signal to the returned data.
+    //             this.movieApiService.movie.set(movieData);
+    //         }
+    //     )
+    //     return false;
+    // }
 }
