@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { MovieapiService } from '../../services/movieapi-service';
 
@@ -10,7 +10,9 @@ import { MovieapiService } from '../../services/movieapi-service';
   templateUrl: './details.html',
   styleUrl: './details.css',
 })
+// this is to display default "try searching for a movie"
 export class Details {
    movieService = inject(MovieapiService);
+
 
 }
