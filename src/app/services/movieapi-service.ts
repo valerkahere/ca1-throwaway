@@ -15,6 +15,8 @@ export class MovieapiService {
 
     public errorMessage = signal<any>(null);
 
+    public totalResults = signal<string | undefined>(undefined);
+
     private _baseURL = "https://www.omdbapi.com/";
     private _API_KEY = "?apikey=e42e477d";
 
@@ -53,7 +55,9 @@ export class MovieapiService {
         )
         .subscribe(data => {
             // returns MovieDetails[]
+            console.log(data.totalResults);
             this.movies.set(data.Search);
+            this.totalResults.set(data.totalResults);
             console.log(this.movies());
         })
     }
