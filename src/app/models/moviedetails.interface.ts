@@ -15,7 +15,7 @@ export interface MovieDetails {
 // s=jaws >1 movies
 export interface SearchResults {
     Search: MovieDetails[];
-    totalResults?: string;
+    totalResults: string;
     Response: string;
     Error?: string;
 }

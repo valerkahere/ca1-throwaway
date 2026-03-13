@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MovieapiService } from '../../services/movieapi-service';
 import { FormsModule } from '@angular/forms';
 
@@ -12,7 +12,10 @@ export class Search {
     // movieData = signal<MovieDetails | undefined>(undefined);
     // 
 
-    constructor(public movieApiService:MovieapiService) {}
+    constructor(public movieApiService:MovieapiService) {
+        
+    }
+    
 
     // getMovieDetails(movieName:string) : boolean {
     //     //The first function passed to the subscribe method specifies the action to take whenever the observable emits an item.
