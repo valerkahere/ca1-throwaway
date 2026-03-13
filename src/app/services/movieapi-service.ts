@@ -30,8 +30,8 @@ export class MovieapiService {
 
     
     // the return value is observable of type MovieDetails
-    getMovie(movieName: string):Observable<MovieDetails> {
-        const fullURL = `${this._baseURL}${this._API_KEY}&t=${movieName}`
+    getMovie(id: string):Observable<MovieDetails> {
+        const fullURL = `${this._baseURL}${this._API_KEY}&t=${id}`
         return this._http.get<MovieDetails>(fullURL)
         .pipe( // pipe chain multiples operators together. Takes observable, returns transformte
             // tap - Performs Side Effects: Use it for actions that don't change the data, such as logging to the console, triggering analytics, or updating an external variable.
@@ -43,8 +43,8 @@ export class MovieapiService {
         
     }
 
-    getMovies(title: string) {
-        const fullURL = `${this._baseURL}${this._API_KEY}&s=${title}`;
+    getMovies(id: string) {
+        const fullURL = `${this._baseURL}${this._API_KEY}&s=${id}`;
         this._http.get<SearchResults>(fullURL)
         .pipe(
             take(1)
