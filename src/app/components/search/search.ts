@@ -1,10 +1,10 @@
-import { Component, signal } from '@angular/core';
+import { Component } from '@angular/core';
 import { MovieapiService } from '../../services/movieapi-service';
-import { MovieDetails } from '../../models/moviedetails.interface';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-search',
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './search.html',
   styleUrl: './search.css',
 })

@@ -1,26 +1,38 @@
 @if (movieService.movie()?.Response === "True") {
-<div class="row bg-light mt-4 p-4">
-    <div class="col-4">
-        @if ((movieService.movie()?.Poster?.length ?? 0) > 3) {
-                <img class="img-fluid" [src]="movieService.movie()?.Poster">
-        }
-    </div>
-    <div class="col-8">
-        @if ((movieService.movie()?.Title ?? "No title") !== null) {
+    <div class="
+    bg-dark bg-gradient text-white
+    border border-light-subtle rounded-4
+    row mt-4 p-4">
+        <div class="col-4">
+            @if ((movieService.movie()?.Poster?.length ?? 0) > 3) {
+            <img class="img-fluid rounded-1 " [src]="movieService.movie()?.Poster">
+            }
+        </div>
+        <div class="col-8">
+            @if ((movieService.movie()?.Title ?? "No title") !== null) {
             <div>
-                <h1>{{(movieService.movie()?.Title ?? "No title")}}</h1>
+                <h1 class="text-info">{{(movieService.movie()?.Title ?? "No title")}}</h1>
                 <h2>Director: {{(movieService.movie()?.Director ?? "No director")}}</h2>
                 <h3>Year of release: {{(movieService.movie()?.Year ?? "No year")}}</h3>
             </div>
-        }
+            }
+        </div>
     </div>
-</div>
+
 } @else {
 
-    <div class="row bg-light mt-4 p-4">
-        @if (!movieService.movie()) {
-            <p>Try searching for a movie</p>
-        }
-        <h3>{{movieService.movie()?.Error }}</h3>
-    </div>
+<div class="
+border border-light-subtle rounded-4
+row bg-light mx-1 p-4">
+    @if (!movieService.movie()) {
+    <h3>Try searching for a movie above</h3>
+    }
+    @if (movieService.movie()?.Error) {
+    <h3 class="text-danger">
+        {{ movieService.movie()?.Error +
+        " Please try searching for a different movie."
+        }}
+    </h3>
+    }
+</div>
 }

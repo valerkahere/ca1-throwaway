@@ -1,9 +1,13 @@
-<form>
-    <div class="form-group">
-        <input type="text" name="movie-name" class="form-control" #moviename placeholder="Enter movie name">
+<form #movieForm="ngForm" (ngSubmit)="movieForm.valid && getMovieDetails(moviename.value)">
+    <div class="form-floating">
+        <!-- 'ngModel' is required for the form to track this input's validity -->
+        <input ngModel #moviename
+         type="text" class="form-control" id="movieName"  name="movieName" required 
+            placeholder="James Bond">
+        <label for="movieName">Movie Name <span class="text-danger">*</span></label>
     </div>
     <div class="form-group mt-2">
-        <button (click)="getMovieDetails(moviename.value)" type="submit" class="btn btn-primary">Get Movie
+        <button type="submit" class="btn btn-primary" [disabled]="movieForm.invalid">Get Movie
             Details</button>
     </div>
 </form>
