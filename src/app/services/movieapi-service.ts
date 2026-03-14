@@ -61,6 +61,7 @@ export class MovieapiService {
     }
 
     getMovies(title: string, page: number = 1) {
+        this.errorMessage.set(null);
         // Save the search term and current page in our state
         this.currentSearchTerm.set(title);
         this.currentPage.set(page);
@@ -76,11 +77,10 @@ export class MovieapiService {
                         this.totalResults.set(parseInt(data.totalResults, 10));
                     } else {
                         // case where movie not found
-                        this.movies.set([]);
+                        this.errorMessage.set("Movie not found.");
                         this.totalResults.set(0);
                     }
                 },
-                error: (err) => console.error(err)
             })
             // data => {
             // returns MovieDetails[]
