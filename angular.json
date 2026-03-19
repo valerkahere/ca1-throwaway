@@ -7,7 +7,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "ca1": {
+    "movie-finder": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -17,8 +17,6 @@
         "build": {
           "builder": "@angular/build:application",
           "options": {
-            "baseHref": "/ca1-throwaway/",
-            "outputPath": "dist/ca1",
             "browser": "src/main.ts",
             "tsConfig": "tsconfig.app.json",
             "assets": [
@@ -63,10 +61,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "ca1:build:production"
+              "buildTarget": "movie-finder:build:production"
             },
             "development": {
-              "buildTarget": "ca1:build:development"
+              "buildTarget": "movie-finder:build:development"
             }
           },
           "defaultConfiguration": "development"
