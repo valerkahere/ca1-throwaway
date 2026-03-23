@@ -14,3 +14,40 @@
     </div>
 
 </form>
+
+<div class="container mt-5 
+d-flex gap-4 flex-column">
+
+
+    <nav aria-label="Pagination">
+        <!-- Page Indicator -->
+        <span class="text-muted">
+            Page {{ movieApiService.currentPage() }} of {{ movieApiService.maxPages() }}
+            (Total: {{ movieApiService.totalResults() }})
+        </span>
+        <ul class="pagination mb-0">
+            <!-- Previous Button: Disable if we are on page 1 -->
+            <li class="page-item">
+                <button [disabled]="movieApiService.currentPage() === 1" (click)="movieApiService.previousPage()"
+                    class="page-link" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </button>
+            </li>
+
+            <li class="page-item"><button (click)="movieApiService.customPage(1)"
+                    [disabled]="movieApiService.movies().length === 0" class="page-link">1</button></li>
+            <li class="page-item"><button (click)="movieApiService.customPage(2)"
+                    [disabled]="movieApiService.movies().length === 0" class="page-link">2</button></li>
+            <li class="page-item"><button (click)="movieApiService.customPage(3)"
+                    [disabled]="movieApiService.movies().length === 0" class="page-link">3</button></li>
+
+            <!-- Next Button: Disable if we hit the max page limit -->
+            <li class="page-item">
+                <button type="button" [disabled]="movieApiService.currentPage() === movieApiService.maxPages()"
+                    (click)="movieApiService.nextPage()" class="page-link" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </button>
+            </li>
+        </ul>
+    </nav>
+</div>

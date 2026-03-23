@@ -1,17 +1,21 @@
 <header>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container">
-            <div class="d-flex flex-row gap-3">
-                <a class="nav-link" routerLink="/" routerLinkActive="active">Home</a>
-                <a class="nav-link" routerLink="/about" routerLinkActive="active">About</a>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container d-flex align-items-center">
+            <!-- Navigation Links -->
+            <div class="navbar-nav d-flex flex-row gap-3">
+                <a class="nav-link" routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page"
+                    [routerLinkActiveOptions]="{exact: true}">Home</a>
+                <a class="nav-link" routerLink="/about" routerLinkActive="active" ariaCurrentWhenActive="page"
+                    [routerLinkActiveOptions]="{exact: true}">About</a>
+            </div>
+
+            <!-- "Developed by" aligned to the right -->
+            <div class="navbar-text ms-auto text-end small lh-sm py-2">
+                Developed by <a href="https://www.valerkahere.com/" target="_blank" class="text-info text-decoration-none">valerkahere</a><br>
+                with <span role="img" aria-label="love">&#x2764;&#xFE0F;</span> for great web experiences.<br>
+                <span class="text-secondary">&copy;All Rights Reserved.</span>
             </div>
         </div>
-    </nav>
-    <nav>
-        
-        
-
-
     </nav>
 </header>
 
@@ -19,45 +23,9 @@
 d-flex gap-4 flex-column">
     <h1>{{title()}}</h1>
 
-    <nav aria-label="Pagination">
-            <!-- Page Indicator -->
-            <span class="text-muted">
-                Page {{ movieApiService.currentPage() }} of {{ movieApiService.maxPages() }}
-                (Total: {{ movieApiService.totalResults() }})
-            </span>
-            <ul class="pagination mb-0">
-                <!-- Previous Button: Disable if we are on page 1 -->
-                <li class="page-item">
-                    <button [disabled]="movieApiService.currentPage() === 1" (click)="movieApiService.previousPage()"
-                        class="page-link" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                    </button>
-                </li>
-
-                <li class="page-item"><button 
-                    (click)="movieApiService.customPage(1)"
-                    [disabled]="movieApiService.movies().length === 0"
-                    class="page-link">1</button></li>
-                <li class="page-item"><button 
-                    (click)="movieApiService.customPage(2)"
-                    [disabled]="movieApiService.movies().length === 0"
-                    class="page-link">2</button></li>
-                <li class="page-item"><button 
-                    (click)="movieApiService.customPage(3)"
-                    [disabled]="movieApiService.movies().length === 0"
-                    class="page-link">3</button></li>
-
-                <!-- Next Button: Disable if we hit the max page limit -->
-                <li class="page-item">
-                    <button type="button"
-                    [disabled]="movieApiService.currentPage() === movieApiService.maxPages()"
-                    (click)="movieApiService.nextPage()" class="page-link" aria-label="Next">
-                        <span aria-hidden="true">&raquo;</span>
-                    </button>
-                </li>
-            </ul>
-        </nav>
 </div>
+
+
 
 
 <router-outlet />

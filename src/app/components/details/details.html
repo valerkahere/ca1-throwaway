@@ -42,7 +42,7 @@
 border border-light-subtle rounded-4
 row bg-light mx-1 p-4">
   @if (movieService.movies().length === 0) {
-  <h3>Try searching for a movie above</h3>
+  <h3>Search for a movie above! Try something like "Mission impossible" (this is a good one)</h3>
   }
   @if (movieService.errorMessage() !== null) {
     <h3 class="text-danger">
